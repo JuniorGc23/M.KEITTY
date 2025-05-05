@@ -1,0 +1,156 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para ti, my love K. 💖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+      font-family: 'Open Sans', sans-serif;
+      overflow-x: hidden;
+      color: #fff;
+      text-align: center;
+      position: relative;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5rem;
+      margin-top: 50px;
+      animation: fadeIn 2s ease;
+    }
+
+    p {
+      font-size: 1.3rem;
+      margin: 30px 20px;
+      animation: fadeIn 3s ease;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 40px auto;
+      max-width: 1000px;
+    }
+
+    .gallery img,
+    .gallery video.video-mini {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border: 4px solid #fff;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover,
+    .gallery video.video-mini:hover {
+      transform: scale(1.07);
+    }
+
+    video#video {
+      margin-top: 30px;
+      width: 85%;
+      max-width: 720px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    audio {
+      display: none;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png') no-repeat center;
+      background-size: contain;
+      animation: float 10s infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-10vh) translateX(50px); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Para ti, my love Keitty 💌</h1>
+  <p>Esta página es un pequeño detalle para recordarte cuánto te amo. Cada imagen, cada segundo de video y cada nota de esta canción me hace pensar en ti. 💖</p>
+
+  <!-- Galería de fotos -->
+  <div class="gallery">
+    <img src="ke1.jpeg" alt="Tu foto hermosa 1">
+    <img src="ke2.jpeg" alt="Tu foto hermosa 2">
+    
+    <!-- Video del mismo tamaño que las imágenes -->
+    <video autoplay loop muted playsinline class="video-mini">
+      <source src="vid1112.mp4" type="video/mp4">
+      Tu navegador no puede reproducir este video.
+    </video>
+  </div>
+
+  <!-- Video grande silenciado inicialmente -->
+  <video id="video" autoplay loop muted>
+    <source src="vide322.mp4" type="video/mp4">
+    Tu navegador no soporta el video.
+  </video>
+
+  <!-- Botón para activar sonido del video -->
+  <button onclick="playVideo()" style="margin-top: 20px; padding: 10px 20px; font-size: 1.1rem; border: none; border-radius: 10px; background: #fff; color: #e91e63; cursor: pointer;">
+    Activar sonido del video 🎵
+  </button>
+
+  <!-- Audio de fondo oculto -->
+  <audio id="musicaFondo" loop>
+    <source src="kamisama op.mp3" type="audio/mpeg">
+    Tu navegador no puede reproducir el audio.
+  </audio>
+
+  <script>
+    function playVideo() {
+      const video = document.getElementById("video");
+      video.muted = false;
+      video.volume = 0.2; // Volumen bajo
+      video.play();
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const audio = document.getElementById("musicaFondo");
+      audio.volume = 1.0;
+      audio.play().catch(err => {
+        console.warn("El navegador bloqueó la reproducción automática del audio.");
+      });
+    });
+
+    // Corazones flotantes
+    for (let i = 0; i < 30; i++) {
+      let heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 5 + Math.random() * 5 + "s";
+      document.body.appendChild(heart);
+    }
+  </script>
+
+</body>
+</html>
